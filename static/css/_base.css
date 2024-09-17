@@ -1,0 +1,20 @@
+@font-face {
+	font-family: IRANSansX;
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/Sahel.eot') format('eot'),
+	url('../fonts/Sahel.woff') format('woff'),
+	url('../fonts/Sahel.woff2') format('woff2');
+}
+
+/* converting english numbers to persian numbers */
+.ss02 {
+    -moz-font-feature-settings: "ss02";
+    -webkit-font-feature-settings: "ss02";
+    font-feature-settings: "ss02";
+}
+
+body {
+    font-family: "IRANSansX", serif;
+    text-align:right !important;
+}

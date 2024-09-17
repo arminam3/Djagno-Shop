@@ -1,0 +1,14 @@
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+<div class="tab-pane fade" id="accountdetails">
+    <form action="" class="form form--account" method="POST">
+        {% csrf_token %}
+        {{ profile_form|crispy }}
+
+    <button class="btn btn-success">{% trans 'Submit' %}</button>
+    </form>
+</div>
+
+
+

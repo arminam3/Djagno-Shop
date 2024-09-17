@@ -1,0 +1,12 @@
+{% load account %}
+{% load i18n %}
+
+{% autoescape off %}
+{% blocktrans %}
+Please Confirm Your Email By This Link
+{{ activate_url }}
+{% endblocktrans %}
+{% endautoescape %}
+
+
+

@@ -1,0 +1,62 @@
+{% load i18n %}
+{% load my_tags %}
+{% load humanize %}
+
+<div class="tab-pane fade" id="orders">
+{% if not orders %}
+    {% trans 'No orders have been registerxed' %}
+    <div class="message-box mb--30 d-none">
+        <p><i class="fa fa-check-circle"></i>هنوز سفارشی ثبت نشده است.</p>
+        <a href="shop-sidebar.html">رفتن به فروشگاه</a>
+    </div>
+{% else %}
+    <div class="table-content table-responsive">
+        <table class="table text-center">
+            <thead>
+            <tr>
+                <th>{% trans 'Order number' %}</th>
+                <th>{% trans 'Date' %}</th>
+                <th>{% trans 'Payment Status' %}</th>
+                <th>{% trans 'Products' %}</th>
+                <th>{% trans 'Total Price' %}</th>
+{#                <th>{% trans '' %}</th>#}
+            </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr style="border:1px solid #cccccc;border-radius: 5px;">
+                        <td>{{ forloop.counter }}</td>
+                        <td class="wide-column">{{ order.j_datetime_created }}</td>
+                        <td class="">
+                            {% if order.payment.get_status_display == 'Complete' %}
+                                <span class="success_pay">
+                                    {{ order.payment_status }}
+                                </span>
+                            {% else %}
+                                <span class="not_pay">
+                                <a href="{% url 'order:create' order.pk %}" style="border-radius: 10%"
+                               class="btn-small">{% trans 'Pay' %}</a>
+                                </span>
+                            {% endif %}
+                        </td>
+                        <td class="wide-column">
+                            {% for item in order.products.all %}
+                                <span>{{ item.product.title }}</span>(&#215;<span>{{ item.quantity|e2f }})</span><br>
+                            {% endfor %}
+
+                        </td>
+                        <td class="wide-column">
+                            {{ order.get_total_price_by_quantity|e2f|intcomma:False }}{% trans '$' %}
+                        </td>
+
+{#                        <td>#}
+{#                            <a href="#"#}
+{#                               class="btn btn-small btn-bg-red btn-color-white btn-hover-2">{% trans 'View' %}</a>#}
+{#                        </td>#}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endif %}

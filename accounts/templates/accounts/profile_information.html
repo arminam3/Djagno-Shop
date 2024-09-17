@@ -1,0 +1,65 @@
+{% extends '_base.html' %}
+
+{% load i18n %}
+{% load static %}
+{% load my_tags %}
+{% load humanize %}
+
+{% block title %}
+    {% trans 'Profile Page' %}
+{% endblock %}
+
+{% block content %}
+    <!-- Main Content Wrapper Start -->
+    <div class="main-content-wrapper">
+        <div class="page-content-inner ptb--80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="user-dashboard-tab flex-column flex-md-row">
+                            <div class="user-dashboard-tab__head nav flex-md-column" role="tablist"
+                                 aria-orientation="vertical">
+                                <a class="nav-link active" data-toggle="pill" role="tab" href="#dashboard"
+                                   aria-controls="dashboard" aria-selected="true">{% trans 'Counter' %}</a>
+                                <a class="nav-link" data-toggle="pill" role="tab" href="#orders" aria-controls="orders"
+                                   aria-selected="true">{% trans 'Orders History' %}</a>
+                                <a class="nav-link" data-toggle="pill" role="tab" href="#addresses"
+                                   aria-controls="addresses" aria-selected="true">{% trans 'Liked Products' %}</a>
+                                <a class="nav-link" data-toggle="pill" role="tab" href="#accountdetails"
+                                   aria-controls="accountdetails" aria-selected="true">{% trans 'Profile Detail' %}</a>
+                                <a class="nav-link" href="{% url 'account_logout' %}">{% trans 'Logout' %}</a>
+                            </div>
+                            <div class="user-dashboard-tab__content tab-content p-4">
+                                <div class="tab-pane fade show active" id="dashboard">
+                                    <p>سلام <strong>
+                                        {% if user.first_name %}
+                                            {{ user.first_name }}
+                                        {% else %}
+                                            {{ user.username }}
+                                        {% endif %}
+                                    </strong></p>
+                                    <p>{% trans 'Through this menu you can edit your information' %}</p>
+                                </div>
+
+                                {% include 'accounts/partial/orders_history.html' with orders=user.order.all %}
+                                {% include 'accounts/partial/liked_products.html' %}
+                                {% include 'accounts/partial/profile_update.html' with  profile_form=profile_form %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Content Wrapper Start -->
+
+    {% include 'cart/cart_sidebar.html' %}
+
+        <!-- ************************* JS Files ************************* -->
+
+    <!-- jQuery JS -->
+    <script src="{% static 'js/vendor.js' %}"></script>
+
+    <!-- Main JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

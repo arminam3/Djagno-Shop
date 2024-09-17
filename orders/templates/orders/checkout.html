@@ -1,0 +1,240 @@
+{% extends '_base.html' %}
+
+{% load i18n %}
+{% load my_tags %}
+{% load humanize %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {% trans 'Order' %}
+{% endblock %}
+
+{% block content %}
+    <!-- Breadcrumb area Start -->
+    <div class="breadcrumb-area bg-color ptb--90" data-bg-color="#f6f6f6">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center flex-sm-row flex-column">
+                        <h1 class="page-title">{% trans 'order' %}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb area End -->
+
+    <!-- Main Content Wrapper Start -->
+    <div class="main-content-wrapper">
+        <div class="page-content-inner">
+            <div class="container">
+                <div class="row pt--50 pt-md--40 pt-sm--20"></div>
+                <div class="row pb--80 pb-md--60 pb-sm--40">
+                    <!-- Checkout Area Start -->
+                    <div class="col-lg-6">
+                        <div class="checkout-title mt--10">
+                            <h2>{% trans 'Order details' %}</h2>
+                        </div>
+                        <div class="checkout-form">
+                            {% if cart.get_total_price %}
+                                <form action="/orders/create/" class="" method="POST" style="font-size: large">
+                                    {% csrf_token %}
+                                    <div id="div_id_first_name" class="form-group"><label for="id_first_name"
+                                                                                          class=" requiredField">
+                                        نام<span class="asteriskField">*</span> </label>
+                                        <div><input type="text" name="first_name" maxlength="50" value="{{ user.first_name }}"
+                                                    class="form-input form__input--2 textinput textInput form-control"
+                                                    required="" id="id_first_name"  style="font-size: medium"></div>
+                                    </div>
+                                    <div id="div_id_last_name" class="form-group">
+{#                                    <label for="{{ form.last_name.id_for_label }}"#}
+{#                                                                                         class=" requiredField">#}
+{#                                        نام خانوادگی<span class="asteriskField">*</span>#}
+{#                                    </label>#}
+                                        {{ form.last_name.label_tag }}*
+                                        <div><input type="text" name="last_name" maxlength="50" value="{{ user.last_name }}"
+                                                    class="form__input form__input--2 textinput textInput form-control"
+                                                    required="" id="id_last_name" style="font-size: medium"></div>
+                                    </div>
+                                    <div id="div_id_address" class="form-group"><label for="id_address"
+                                                                                       class=" requiredField">
+                                        آدرس<span class="asteriskField">*</span> </label>
+                                        <div><input type="text" name="address" maxlength="300"
+                                                    value="{% if user.address %}
+                                                            {{ user.address }}
+                                                           {% endif %}"
+
+                                                    class="form__input form__input--2 textinput textInput form-control"
+                                                    required="" id="id_address" style="font-size: medium"></div>
+                                    </div>
+                                    <div id="div_id_email" class="form-group"><label for="id_email"
+                                                                                     class=" requiredField">
+                                        ایمیل<span class="asteriskField">*</span> </label>
+                                        <div><input type="email" name="email" maxlength="254" value="{{ user.email }}"
+                                                    class="form__input form__input--2 emailinput form-control"
+                                                    required="" id="id_email" style="font-size: medium"></div>
+                                    </div>
+                                    <div id="div_id_phone" class="form-group"><label for="id_phone"
+                                                                                     class=" requiredField">
+                                        Phone<span class="asteriskField">*</span> </label>
+                                        <div><input type="number" name="phone" min="0" value="{{ user.phone }}"
+                                                    class="form__input form__input--2 numberinput form-control"
+                                                    required="" id="id_phone" style="font-size: medium"></div>
+                                    </div>
+                                    <div id="div_id_note" class="form-group"><label for="id_note" class="">
+                                        {% trans 'Note' %}
+                                    </label>
+                                        <div><textarea name="note" cols="40" rows="10" class="textarea form-control"
+                                                       id="id_note" style="font-size: medium"></textarea></div>
+                                    </div>
+
+                                    <button type="submit" class="btn  btn-bg-red btn-color-white btn-hover-2 center"
+                                            name="pay">
+                                        {% trans 'Pay' %}
+                                    </button>
+                                    <button type="submit" class="btn  btn-bg-red btn-color-white btn-hover-2 center">
+                                        {% trans 'Save order' %}
+                                    </button>
+                                </form>
+                            {% else %}
+                                <p>{% trans "Your cart is empty" %}</p>
+                                <a href="{% url 'product:list' %}"
+                                   class="btn  btn-bg-red btn-color-white btn-hover-2 center align-content-center">{% trans 'Product list' %}</a>
+                            {% endif %}
+                            {#                        <form action="{% url 'order:create' %}" class="form form--checkout" method="POST">#}
+                            {#                            {% csrf_token %}#}
+                            {#                            <div class="form-row mb--20">#}
+                            {#                                <div class="form__group col-md-6 mb-sm--30">#}
+                            {#                                    <label for="first_name"#}
+                            {#                                           class="form__label form__label--2">{% trans 'first_name' %} <span#}
+                            {#                                            class="required">*</span></label>#}
+                            {#                                    <input type="text" name="first_name" id="billing_fname"#}
+                            {#                                           class="form__input form__input--2" value="{{ user.first_name }}">#}
+                            {#                                </div>#}
+                            {#                                <div class="form__group col-md-6">#}
+                            {#                                    <label for="last_name"#}
+                            {#                                           class="form__label form__label--2">{% trans 'last_name' %} <span#}
+                            {#                                            class="required">*</span></label>#}
+                            {#                                    <input type="text" name="last_name" id="billing_lname"#}
+                            {#                                           class="form__input form__input--2" value="{{ user.last_name }}">#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {#                            <div class="form-row mb--20">#}
+                            {#                                <div class="form__group col-12">#}
+                            {#                                    <label for="address"#}
+                            {#                                           class="form__label form__label--2">{% trans 'address' %}</label>#}
+                            {#                                    <textarea dir="rtl"#}
+                            {#                                              class="form__input form__input--2 form__input--textarea text-right"#}
+                            {#                                              id="orderNotes" name="orderNotes"#}
+                            {#                                              placeholder="اگر یادداشتی دارید در اینجا وارد کنید. در غیر این صورت این مکان را خالی بگذارید">{% if user.address %}#}
+                            {#                                        {{ user.address }}#}
+                            {#                                    {% endif %}</textarea>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {#                            <div class="form-row mb--20">#}
+                            {#                                <div class="form__group col-12">#}
+                            {#                                    <label for="phone"#}
+                            {#                                           class="form__label form__label--2">{% trans 'phone number' %}<span#}
+                            {#                                            class="required">*</span></label>#}
+                            {#                                    <input type="text" name="phone" id="billing_phone"#}
+                            {#                                           class="form__input form__input--2" value="#}
+                            {#                                               {% if user.phone %}#}
+                            {#                                                    {{ user.phone }}#}
+                            {#                                                {% endif %}">#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {#                            <div class="form-row mb--20">#}
+                            {#                                <div class="form__group col-12">#}
+                            {#                                    <label for="email" class="form__label form__label--2">{% trans 'email' %} <span#}
+                            {#                                            class="required">*</span></label>#}
+                            {#                                    <input type="email" name="email" id="billing_email"#}
+                            {#                                           class="form__input form__input--2" value="{{ user.email }}">#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {#                            <div class="form-row">#}
+                            {#                                <div class="form__group col-12">#}
+                            {#                                    <label for="orderNotes"#}
+                            {#                                           class="form__label form__label--2">{% trans 'Your note' %}</label>#}
+                            {#                                    <textarea class="form__input form__input--2 form__input--textarea"#}
+                            {#                                              id="orderNotes" name="orderNotes"#}
+                            {#                                              placeholder="اگر یادداشتی دارید در اینجا وارد کنید. در غیر این صورت این مکان را خالی بگذارید"></textarea>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {##}
+                            {#                            <button type="submit" class="btn  btn-bg-red btn-color-white btn-hover-2 center">{% trans 'Submit' %}</button>#}
+                            {#                        </form>#}
+
+                        </div>
+                    </div>
+                    <div class="col-xl-5 offset-xl-1 col-lg-6 mt-md--40">
+                        <div class="order-details">
+                            <div class="checkout-title mt--10">
+                                <h2>سفارش شما</h2>
+                            </div>
+                            <div class="table-content table-responsive mb--30">
+                                <table class="table order-table order-table-2">
+                                    <thead>
+                                    <tr style='font-family: IRANSans'>
+                                        <th>{% trans 'Product' %}</th>
+                                        <th class="text-right">{% trans 'Final price' %}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in cart %}
+                                        {% if item.product_obj.active %}
+                                        <tr>
+                                            <th style="font-family: IRANSans">{{ forloop.counter }})
+                                                <strong>{{ item.product_obj.title }}<span>&#10005;</span>{{ item.quantity }}
+                                                </strong>
+                                            </th>
+                                            <td class="text-right">
+                                                {{ item.total_price_by_quantity|intcomma:False|e2f }}{% trans '$' %}</td>
+                                        </tr>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    </tbody>
+                                    <tfoot>
+                                    <tr class="cart-subtotal">
+                                        <th style="font-family: IRANSans">{% trans 'total' %}</th>
+                                        <td class="text-right">
+                                            {{ cart.get_total_price|intcomma:False|e2f }}{% trans '$' %}</td>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="checkout-payment">
+                                <h2 class="py-5">روش پرداخت</h2>
+                                <form action="#" class="payment-form">
+                                    <div class="payment-group mb--10">
+                                        <div class="payment-radio">
+                                            <input type="radio" value="bank" name="payment-method" id="bank" checked>
+                                            <label class="payment-label" for="cheque">درگاه آنلاین زرین پال</label>
+                                        </div>
+                                        <div class="payment-radio">
+                                            <input type="checkbox" value="bank" name="user-money" id="bank" checked>
+                                            <label class="payment-label" for="cheque">{% trans 'Pay from credit' %}</label>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Checkout Area End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Content Wrapper Start -->
+
+    {% include 'cart/cart_sidebar.html' %}
+
+    <!-- ************************* JS Files ************************* -->
+
+    <!-- jQuery JS -->
+    <script src="{% static 'js/vendor.js' %}"></script>
+
+    <!-- Main JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+{% endblock %}

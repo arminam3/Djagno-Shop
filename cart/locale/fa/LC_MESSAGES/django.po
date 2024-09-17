@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-19 14:33+0430\n"
+"PO-Revision-Date: 2022-09-12 18:11+0430\n"
+"Last-Translator:   <armin@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: .\cart.py:46 .\cart.py:108
+msgid "Successfully done"
+msgstr " با موفقیت صورت گرفت"
+
+#: .\cart.py:59
+msgid "Product successfully removed"
+msgstr " با موفقیت از سبد خرید حذف شد "
+
+#: .\templates\cart\cart.html:9 .\templates\cart\cart.html:14
+msgid "Cart"
+msgstr "سبد خرید"
+
+#: .\templates\cart\cart.html:40
+msgid "Your cart in empty! "
+msgstr "سبد خرید شما خالی است"
+
+#: .\templates\cart\cart.html:42
+msgid "Go Shopping"
+msgstr "بریم خرید ..."
+
+#: .\templates\cart\cart.html:64 .\templates\cart\cart.html:98
+#: .\templates\cart\cart.html:132 .\templates\cart\cart.html:141
+#: .\templates\cart\cart_sidebar.html:30 .\templates\cart\cart_sidebar.html:45
+msgid "$"
+msgstr "تومان"
+
+#: .\templates\cart\cart.html:67 .\templates\cart\cart.html:102
+#: .\templates\cart\cart_sidebar.html:33
+msgid "This product is not available"
+msgstr "ناموجود"
+
+#: .\templates\cart\cart.html:86
+msgid "Update"
+msgstr "به روزرسانی"
+
+#: .\templates\cart\cart_sidebar.html:39
+msgid "Your cart is empty"
+msgstr "سبد خرید شما خالی است"
+
+#, fuzzy
+#~ msgid "%s of %d added to cart successfully"
+#~ msgstr "{} مورد {} به سبد خرید اضافه شد"

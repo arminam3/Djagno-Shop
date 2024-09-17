@@ -1,0 +1,2 @@
+SECRET_KEY = 'sample'
+DJANGO_DEBUG = True or False

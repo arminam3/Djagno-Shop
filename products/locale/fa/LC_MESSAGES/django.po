@@ -1,0 +1,129 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-22 14:25+0330\n"
+"PO-Revision-Date: 2022-09-10 18:56+0430\n"
+"Last-Translator:   <armin@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: .\models.py:36
+msgid "Product cover"
+msgstr "عکس محصول"
+
+#: .\models.py:39
+msgid "DateTime of creation"
+msgstr "تاریخ ایجاد"
+
+#: .\models.py:71
+msgid "Very Bad"
+msgstr "خیلی بد"
+
+#: .\models.py:72
+msgid "Bad"
+msgstr "بد"
+
+#: .\models.py:73
+msgid "Normal"
+msgstr "معمولی"
+
+#: .\models.py:74
+msgid "Good"
+msgstr "خوب"
+
+#: .\models.py:75
+msgid "Perfect"
+msgstr "عالی"
+
+#: .\models.py:80
+msgid "Please Enter Your Idea"
+msgstr "لطفا دیدگاه خود را وارد نمایید"
+
+#: .\models.py:81
+msgid "Stars"
+msgstr "امتیاز"
+
+#: .\templates\products\product_detail.html:38
+msgid "$"
+msgstr "تومان"
+
+#: .\templates\products\product_detail.html:42
+msgid "Product details of"
+msgstr "توضیحات محصول"
+
+#: .\templates\products\product_detail.html:56
+#: .\templates\products\product_list.html:93
+msgid "Add to Cart"
+msgstr "افزودن به سبد خرید"
+
+#: .\templates\products\product_detail.html:60
+#: .\templates\products\product_list.html:98
+msgid "This product is not available"
+msgstr "ناموجود"
+
+#: .\templates\products\product_detail.html:64
+msgid "Categories"
+msgstr "دسته بندی ها"
+
+#: .\templates\products\product_detail.html:80
+msgid "Product Descriptions"
+msgstr "توضیحات محصول"
+
+#: .\templates\products\product_detail.html:85
+msgid "Attributes"
+msgstr "ویژگی ها"
+
+#: .\templates\products\product_detail.html:89
+msgid "Comments"
+msgstr "نظرات"
+
+#: .\templates\products\product_detail.html:133
+msgid "Comment for"
+msgstr "نظر برای"
+
+#: .\templates\products\product_detail.html:176
+msgid "Write Your Comment"
+msgstr "نظر خود را بنویسید"
+
+#: .\templates\products\product_detail.html:185
+msgid "Submit"
+msgstr "ارسال"
+
+#: .\templates\products\product_detail.html:189
+msgid "To write your comment please"
+msgstr "برای وارد کردن دیدگاه لطفا"
+
+#: .\templates\products\product_detail.html:191
+msgid "Login"
+msgstr "ورود"
+
+#, fuzzy
+#~| msgid "This product is not available"
+#~ msgid "This product is not availble"
+#~ msgstr "ناموجود"
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "                                                                this is %"
+#~| "(author)s and %(gg)s\n"
+#~| "                                                            "
+#~ msgid ""
+#~ "\n"
+#~ "                                                                this is %"
+#~ "(author)s and %(p)s\n"
+#~ "                                                            "
+#~ msgstr ""
+#~ "\n"
+#~ "سلام این %(author)s است  و نام محصول %(gg)s است."
